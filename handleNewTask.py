@@ -133,14 +133,14 @@ def handleNewTask(command, jenisTask):
     else: # Put into database and return success message
         # Establish connection to DB
         mydb = mysql.connector.connect(
-            # host="localhost",
-            # user="root",
-            # password="placeholder",
-            # database="task"
             host="localhost",
-            user="hariya",
-            password="31213121",
+            user="root",
+            password="dika090301",
             database="task"
+            # host="localhost",
+            # user="hariya",
+            # password="31213121",
+            # database="task"
         )
         mycursor = mydb.cursor()
 
@@ -150,10 +150,11 @@ def handleNewTask(command, jenisTask):
         mydb.commit()
         
         # Selecting and returning the previously added task
-        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline=\'"+tanggal_deadline+"\' and kode_matkul=\'"+kode_matkul+"\' and jenis_task=\'"+jenisTask+"\' and topik_task=\'"+topik_task+"\';"
+        selectQuery = "SELECT id_task FROM taskList WHERE tanggal_deadline=\'"+tanggal_deadline+"\' and kode_matkul=\'"+kode_matkul+"\' and jenis_task=\'"+jenisTask+"\' and topik_task=\'"+topik_task+"\';"
         mycursor.execute(selectQuery)
         result = mycursor.fetchall()
         newID = getStringFromResult(result[0])
         successMessage = "Task berhasil ditambahkan!\n"
         newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenisTask+" - "+topik_task+"\n"
         return successMessage + newTask 
+print(handleNewTask("Tubes IF2211 \"String Matching\" pada 15/04/2021","Tubes"))
