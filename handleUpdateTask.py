@@ -15,19 +15,11 @@ def getID(command):
     else: # Input tidak sesuai format
         return None
 
-def getDateFromResult(result):
-    temp = str(result)
-    newString = ""
-    for i in temp:
-        if ((ord(i) >= 48 and ord(i) <= 57) or ord(i) == 45):
-            newString = newString + i
-    return newString # Format -> YYYY-MM-DD
-
 def handleUpdateTask(command):
     # Define error message
     isIDError = False
     isTanggalError = False
-    errorMessageID = 'Terdapat kesalah penulisan format ID!\n'
+    errorMessageID = 'Terdapat kesalahan penulisan format ID!\n'
     errorMessageTanggal = 'Terdapat kesalahan penulisan format tanggal atau tanggal yang dimasukkan tidak valid!\n'
     errorMessage = ''
 
@@ -73,9 +65,9 @@ def handleUpdateTask(command):
             mydb.commit()
 
             # Selecting previously updated task and generate success message
-            selectQuery = 'SELECT tanggal_deadline FROM tasklist WHERE id_task='+ID+';'
-            mycursor.execute(selectQuery)
-            result = mycursor.fetchall()
+            # selectQuery = 'SELECT tanggal_deadline FROM tasklist WHERE id_task='+ID+';'
+            # mycursor.execute(selectQuery)
+            # result = mycursor.fetchall()
             newTanggal = reverseDate(tanggal_baru)
             successMessage = "Task berhasil di-update!\n"
             updatedTask = "Deadline task dengan ID = "+ID+" berhasil di-update menjadi tanggal "+newTanggal+"!\n"

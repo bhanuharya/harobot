@@ -36,6 +36,7 @@ CREATE TABLE `taskList` (
   `kode_matkul` varchar(10) DEFAULT NULL,
   `jenis_task` varchar(255) DEFAULT NULL,
   `topik_task` varchar(255) DEFAULT NULL,
+  `isDone` enum('Sudah','Belum') DEFAULT NULL,
   PRIMARY KEY (`id_task`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,7 +47,7 @@ CREATE TABLE `taskList` (
 
 LOCK TABLES `taskList` WRITE;
 /*!40000 ALTER TABLE `taskList` DISABLE KEYS */;
-INSERT INTO `taskList` (`id_task`, `tanggal_deadline`, `kode_matkul`, `jenis_task`, `topik_task`) VALUES (1,'2021-04-28','IF2211','Tubes','Regex');
+INSERT INTO `taskList` (`id_task`, `tanggal_deadline`, `kode_matkul`, `jenis_task`, `topik_task`, `isDone`) VALUES (1,'2021-04-28','IF2211','Tubes','Regex','Belum');
 /*!40000 ALTER TABLE `taskList` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-28  1:36:27
+-- Dump completed on 2021-04-28  2:40:21

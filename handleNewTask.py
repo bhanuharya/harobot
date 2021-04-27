@@ -141,7 +141,7 @@ def handleNewTask(command, jenisTask):
         mycursor = mydb.cursor()
 
         # Generate insert statement
-        insertQuery = "INSERT INTO taskList (tanggal_deadline,kode_matkul,jenis_task,topik_task) VALUES (\'"+tanggal_deadline+"\',\'"+kode_matkul+"\',\'"+jenisTask+"\',\'"+topik_task+"\');"
+        insertQuery = "INSERT INTO taskList (tanggal_deadline,kode_matkul,jenis_task,topik_task,isDone) VALUES (\'"+tanggal_deadline+"\',\'"+kode_matkul+"\',\'"+jenisTask+"\',\'"+topik_task+"\',\'Belum\');"
         mycursor.execute(insertQuery)
         mydb.commit()
         
