@@ -32,15 +32,20 @@ def showDeadline(command):
     # getTopik
     topik = getTaskTopic(command)
 
+    isdone = "Belum"
     # Search tanggal based on kodekuliah, jenistugas, topik
     #select
-    if(jenis_tugas==None):
-        selectQuery = "SELECT tanggal_deadline FROM taskList WHERE kode_matkul="+kode_matkul+";"
-    else:
-        if(topik == None):
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
-        else:
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
+    selectQuery = ""
+    selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\';"
+    # if(jenis_tugas==None):
+    #     selectQuery = "SELECT tanggal_deadline FROM taskList WHERE kode_matkul=\'"+kode_matkul+"\';"
+    # else:
+    #     if(topik == None):
+    #         # selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = \'"+jenis_tugas+"\' and kode_matkul=\'"+kode_matkul+"\';"
+    #         selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\';"
+    #     else:
+    #         selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = \'"+jenis_tugas+"\' and kode_matkul=\'"+kode_matkul+"\' and topik_task=\'"+topik+"\';"
+    print(selectQuery)
     mycursor.execute(selectQuery)
     result = mycursor.fetchall()
 

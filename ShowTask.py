@@ -26,7 +26,7 @@ def showTask(command):
 
     #getJenisTugas
     jenis_tugas = getJenisTugas(command)
-
+    selectQuery = ''
     if(kmpMatch(command, "ke depan")!=-1):
         if(kmpMatch(command, "minggu")!=-1):
             #getangka
@@ -72,12 +72,16 @@ def showTask(command):
                 else:
                     selectQuery = "SELECT * FROM taskList WHERE jenis_task = "+jenis_tugas+" and tanggal_deadline="+today+";"
             else:
-                if(kmpMatch(command, "sejauh ini"!=-1)):
+                if(kmpMatch(command, "sejauh ini" )!=-1):
                     #select all
                     if jenis_tugas == None:
-                        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline >= "+getHariIni()+";"
+                        # selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline >= "+getHariIni()+";"
+                        selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\';"
                     else:
-                        selectQuery = "SELECT * FROM taskList WHERE jenis_task ="+jenis_tugas+" and tanggal_deadline >= "+getHariIni()+";"
+                        selectQuery = "SELECT * FROM taskList WHERE jenis_task =\'"+jenis_tugas+"\' and tanggal_deadline >= \'"+getHariIni()+"\';"
+                        # selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\';"
+    # selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\';"
+    print(selectQuery)
     mycursor.execute(selectQuery)
     result = mycursor.fetchall()
     
@@ -86,12 +90,12 @@ def showTask(command):
     else:
         message = "[Daftar Deadline]\n"
         n = 1
-        for tuple in result:
-            idTask = tuple[0]
-            deadline = tuple[1]
-            matkul = tuple[2]
-            jenis = tuple[3]
-            topik = tuple[4]
+        for tup in result:
+            idTask = tup[0]
+            deadline = tup[1]
+            matkul = tup[2]
+            jenis = tup[3]
+            topik = tup[4]
             task = str(n) + ". (ID: "+ str(idTask) + ") "+str(deadline)+" - "+ matkul + " - " + jenis + " - " + topik + "\n"
             message = message + task
             n+=1
