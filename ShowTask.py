@@ -10,7 +10,7 @@ import mysql.connector
 # Command : "deadline" + <Jenis tugas> + waktu (interval, n minggu, n hari, hari ini, sejauh ini) + "apa saja"
 # Trigger : if (kmpMatch(command.lower(),"deadline")!=-1 and kmpMatch(command, "apa saja")!=-1)
 
-def ShowTask(command):
+def showTask(command):
     # Connect database
     mydb = mysql.connector.connect(
         host="localhost",
