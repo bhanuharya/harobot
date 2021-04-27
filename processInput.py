@@ -48,13 +48,11 @@ def processInput(command):
     # Process command
     for update in listUpdateCommand:
         if (kmpMatch(command,update) != -1):
-            handleUpdateTask(command)
-            return None
+            return handleUpdateTask(command)
     
     for done in listDoneCommand:
         if (kmpMatch(command,done) != -1):
-            handleMarkDoneTask(command)
-            return None
+            return handleMarkDoneTask(command)
     
     for task in listTask:
         if (kmpMatch(command,task) != -1):
