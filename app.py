@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
+# from processInput import *
 
 
 app = Flask(__name__)
@@ -8,3 +9,14 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    if(userText == "halo"):
+        # return str(english_bot.get_response(userText))
+        return str('Haro, Warudo!')
+    if(userText == "hi"):
+        # return str(english_bot.get_response(userText))
+        return str('Hi bro')
+    
