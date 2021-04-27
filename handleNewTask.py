@@ -67,10 +67,90 @@ def getKodeMatkul(command):
     if (re.search(allowedKodeFormat,command)):
         matchObject = re.search(allowedKodeFormat,command)
     if (matchObject):
-        kodeFormat - matchObject.group()
+        kodeFormat = matchObject.group()
         return kodeFormat
-    else:
+    else: # Ada kesalahan penulisan format kode matkul
         return None
 
+def getTaskTopic(command): # Topik task dikutip sama petik dua atau petik satu
+    matchObject = None
+    allowedTopikFormat = ["\"(\w|\s)*\"","\'(\w|\s)*\'"]
+    for format in allowedTopikFormat:
+        if (re.search(allowedTopikFormat,command)):
+            matchObject = re.search(allowedTopikFormat,command)
+    if (matchObject):
+        topikFormat = matchObject.group()
+        if (len(topikFormat) <= 255):
+            return topikFormat
+        else: # Panjang string melebihi 255 karakter
+            return None
+    else: # Ada kesalahan penulisan format topik task
+        return None
+
+def getStringFromResult(result):
+    temp = str(result)
+    newString = ""
+    for i in temp:
+        if (ord(i) >= 48 and ord(i) <= 57):
+            newString = newString + i
+    return newString
+
 def handleNewTask(command, jenisTask):
+    # Define error message
+    isTanggalError = False
+    isKodeError = False
+    isTopikError = False
+    errorMessageTanggal = 'Terdapat kesalahan penulisan format tanggal atau tanggal yang dimasukkan tidak valid!\n'
+    errorMessageKode = 'Terdapat kesalahan penulisan format kode mata kuliah!\n'
+    errorMessageTopik = 'Terdapat kesalahan penulisan format topik task atau panjang karakter topik melebih 255 karakter!\n'
+    errorMessage = ''
+
+    # Check Tanggal error
+    tanggal_deadline = getDateWithRegex(command)
+    if (tanggal_deadline == None):
+        isTanggalError = True
+    else:
+        tanggal_deadline = reverseDate(getDateWithRegex(command)) # Disiapin buat dimasukin ke database
     
+    # Check Kode error
+    kode_matkul = getKodeMatkul(command)
+    if (kode_matkul == None):
+        isKodeError = True
+    
+    # Check Topik Error
+    topik_task = getTaskTopic(command)
+    if (topik_task == None):
+        isTopikError = True
+    
+    # Generate output
+    if (isTanggalError or isKodeError or isTopikError): # Return error message
+        if (isTanggalError):
+            errorMessage = errorMessage + errorMessageTanggal
+        if (isKodeError):
+            errorMessage = errorMessage + errorMessageKode
+        if (isTopikError):
+            errorMessage = errorMessage + errorMessageTopik
+        return errorMessage
+    else: # Put into database and return success message
+        # Establish connection to DB
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="placeholder",
+            database="task"
+        )
+        mycursor = mydb.cursor()
+
+        # Generate insert statement
+        insertQuery = "INSERT INTO taskList (tanggal_deadline,kode_matkul,jenis_task,topik_task) VALUES ("+tanggal_deadline+","+kode_matkul+","+jenisTask+","+topik_task+");"
+        mycursor.execute(insertQuery)
+        mydb.commit()
+        
+        # Selecting and returning the previously added task
+        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline="+tanggal_deadline+" and kode_matkul="+kode_matkul+" and jenis_task="+jenis_task+" and topik_task="+topik_task+";"
+        mycursor.execute(selectQuery)
+        result = mycursor.fetchall()
+        newID = getStringFromResult(result[0])
+        successMessage = "Task berhasil ditambahkan!\n"
+        newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenis_task+" - "+topik_task+"\n"
+        return successMessage + newTask 
