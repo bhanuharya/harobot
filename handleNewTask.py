@@ -50,15 +50,14 @@ def getDateWithRegex(command):
     else: # Ada kesalahan penulisan tanggal (ga sesuai format)
         return None
 
-def reverseDate(date): # bertipe string
+def reverseDate(date): # bertipe string. Masukan berupa input string dari pengguna dan digunakan untuk SQL
     listTampungan = []
     newDate = ''
     if (date[2] == '-'):
         listTampungan = date.split('-')
-        newDate = listTampungan[2] + "-" + listTampungan[1] + "-" + listTampungan[0]
     elif (date[2] == '/'):
         listTampungan = date.split('/')
-        newDate = listTampungan[2] + "/" + listTampungan[1] + "/" + listTampungan[0]
+    newDate = listTampungan[2] + "-" + listTampungan[1] + "-" + listTampungan[0]
     return newDate
 
 def getKodeMatkul(command):
@@ -142,12 +141,12 @@ def handleNewTask(command, jenisTask):
         mycursor = mydb.cursor()
 
         # Generate insert statement
-        insertQuery = "INSERT INTO taskList (tanggal_deadline,kode_matkul,jenis_task,topik_task) VALUES ("+tanggal_deadline+","+kode_matkul+","+jenisTask+","+topik_task+");"
+        insertQuery = "INSERT INTO taskList (tanggal_deadline,kode_matkul,jenis_task,topik_task) VALUES (\'"+tanggal_deadline+"\',\'"+kode_matkul+"\',\'"+jenisTask+"\',\'"+topik_task+"\');"
         mycursor.execute(insertQuery)
         mydb.commit()
         
         # Selecting and returning the previously added task
-        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline="+tanggal_deadline+" and kode_matkul="+kode_matkul+" and jenis_task="+jenis_task+" and topik_task="+topik_task+";"
+        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline=\'"+tanggal_deadline+"\' and kode_matkul=\'"+kode_matkul+"\' and jenis_task=\'"+jenis_task+"\' and topik_task=\'"+topik_task+"\';"
         mycursor.execute(selectQuery)
         result = mycursor.fetchall()
         newID = getStringFromResult(result[0])
