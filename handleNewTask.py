@@ -73,10 +73,10 @@ def getKodeMatkul(command):
 
 def getTaskTopic(command): # Topik task dikutip sama petik dua atau petik satu
     matchObject = None
-    allowedTopikFormat = ["\"(\w|\s)*\"","\'(\w|\s)*\'"]
-    for format in allowedTopikFormat:
-        if (re.search(allowedTopikFormat,command)):
-            matchObject = re.search(allowedTopikFormat,command)
+    # allowedTopikFormat = ["\"(\w|\s)*\"","\'(\w|\s)*\'"]
+    # for format in allowedTopikFormat:
+    if (re.search("\"(\w|\s)*\"|\'(\w|\s)*\'",command)):
+        matchObject = re.search("\"(\w|\s)*\"|\'(\w|\s)*\'",command)
     if (matchObject):
         topikFormat = matchObject.group()
         if (len(topikFormat) <= 255):
@@ -133,9 +133,13 @@ def handleNewTask(command, jenisTask):
     else: # Put into database and return success message
         # Establish connection to DB
         mydb = mysql.connector.connect(
+            # host="localhost",
+            # user="root",
+            # password="placeholder",
+            # database="task"
             host="localhost",
-            user="root",
-            password="placeholder",
+            user="hariya",
+            password="31213121",
             database="task"
         )
         mycursor = mydb.cursor()
@@ -146,10 +150,10 @@ def handleNewTask(command, jenisTask):
         mydb.commit()
         
         # Selecting and returning the previously added task
-        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline=\'"+tanggal_deadline+"\' and kode_matkul=\'"+kode_matkul+"\' and jenis_task=\'"+jenis_task+"\' and topik_task=\'"+topik_task+"\';"
+        selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline=\'"+tanggal_deadline+"\' and kode_matkul=\'"+kode_matkul+"\' and jenis_task=\'"+jenisTask+"\' and topik_task=\'"+topik_task+"\';"
         mycursor.execute(selectQuery)
         result = mycursor.fetchall()
         newID = getStringFromResult(result[0])
         successMessage = "Task berhasil ditambahkan!\n"
-        newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenis_task+" - "+topik_task+"\n"
+        newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenisTask+" - "+topik_task+"\n"
         return successMessage + newTask 

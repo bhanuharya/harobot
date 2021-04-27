@@ -45,9 +45,13 @@ def handleUpdateTask(command):
     else: # Cari ID di database
         # Establish connection to DB
         mydb = mysql.connector.connect(
+            # host="localhost",
+            # user="root",
+            # password="placeholder",
+            # database="task"
             host="localhost",
-            user="root",
-            password="placeholder",
+            user="hariya",
+            password="31213121",
             database="task"
         )
         mycursor = mydb.cursor()

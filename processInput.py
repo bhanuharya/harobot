@@ -71,4 +71,5 @@ def processInput(command):
     return "Command tidak dikenali!"    # Masuk kesini kalo di for loop task ga diketahuin task apa yg mau ditambahin
                                         # Artinya bisa langsung dikasih tau kalo commmand ga dikenalin
 
-    
+com = str("Tubes IF2211 \"String Matching\" pada 14/07/2021")
+print(str(processInput(com)))

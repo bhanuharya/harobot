@@ -12,9 +12,13 @@ import mysql.connector
 def showDeadline(command):
     # Connect database
     mydb = mysql.connector.connect(
+        # host="localhost",
+        # user="root",
+        # password="placeholder",
+        # database="task"
         host="localhost",
-        user="root",
-        password="placeholder",
+        user="hariya",
+        password="31213121",
         database="task"
     )
     mycursor = mydb.cursor()
@@ -34,9 +38,9 @@ def showDeadline(command):
         selectQuery = "SELECT tanggal_deadline FROM taskList WHERE kode_matkul="+kode_matkul+";"
     else:
         if(topik == None):
-            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
+            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
         else:
-            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
+            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
     mycursor.execute(selectQuery)
     result = mycursor.fetchall()
 
