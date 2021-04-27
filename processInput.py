@@ -3,6 +3,8 @@ from KnuthMorrisPratt import *
 from handleUpdateTask import *
 from handleMarkDoneTask import *
 from handleNewTask import *
+from ShowTask import showTask
+from ShowDeadline import showDeadline
 
 def removeNewLine(string):
     newString = ''
@@ -57,6 +59,12 @@ def processInput(command):
     for task in listTask:
         if (kmpMatch(command,task) != -1):
             return handleNewTask(command,task)
+
+    if(kmpMatch(command.lower(), "apa saja") != -1 and kmpMatch(command.lower(), "deadline")):
+        return showTask(command)
     
+    if(kmpMatch(command.lower(), "kapan") != -1 and kmpMatch(command.lower(), "deadline")):
+        return showDeadline(command)
+
     return "Command tidak dikenali!"    # Masuk kesini kalo di for loop task ga diketahuin task apa yg mau ditambahin
                                         # Artinya bisa langsung dikasih tau kalo commmand ga dikenalin

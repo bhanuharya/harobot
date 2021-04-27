@@ -34,9 +34,9 @@ def showDeadline(command):
         selectQuery = "SELECT tanggal_deadline FROM taskList WHERE kode_matkul="+kode_matkul+";"
     else:
         if(topik == None):
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
+            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
         else:
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
+            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
     mycursor.execute(selectQuery)
     result = mycursor.fetchall()
 
