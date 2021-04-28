@@ -133,14 +133,11 @@ def handleNewTask(command, jenisTask):
     else: # Put into database and return success message
         # Establish connection to DB
         mydb = mysql.connector.connect(
-            # host="localhost",
-            # user="root",
-            # password="",
-            # database="task"
             host="localhost",
-            user="hariya",
-            password="31213121",
+            user="root",
+            password="",
             database="task"
+            
         )
         mycursor = mydb.cursor()
 
