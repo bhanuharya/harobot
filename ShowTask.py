@@ -73,7 +73,6 @@ def showTask(command):
                 else:
                     selectQuery = "SELECT * FROM taskList WHERE jenis_task = \'"+jenis_tugas+"\' and tanggal_deadline=\'"+today+"\';"
             else:
-                if(kmpMatch(command, "sejauh ini" )!=-1):
                     #select all
                     if jenis_tugas == None:
                         # selectQuery = "SELECT * FROM taskList WHERE tanggal_deadline >= "+getHariIni()+";"
