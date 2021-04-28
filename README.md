@@ -27,7 +27,24 @@ run flask
    4. Topik Tugas
       1. Penulisan topik tugas harus dikutip oleh petik satu atau petik dua
 2. Melihat Daftar Task yang Harus Dikerjakan
+   1. Tanggal
+      1. DD-MM-YYYY
+      2. DD/MM/YYYY
+   2. Kode Mata Kuliah
+      1. Dua huruf diikuti oleh 4 angka (contoh: IF2211)
+   3. Jenis Tugas
+      1. Harus Merupakan salah satu dari 7 jenis task yang dapat dicatat
+   4. Topik Tugas
+      1. Penulisan topik tugas harus dikutip oleh petik satu atau petik dua
+   5. Perintah masukan mengandung "deadline" dan "apa saja". Contoh : "Ada deadline apa saja?"
 3. Menampilkan Deadline Suatu Task
+   1. Kode Mata Kuliah
+      1. Dua huruf diikuti oleh 4 angka (contoh: IF2211)
+   2. Jenis Tugas
+      1. Harus Merupakan salah satu dari 7 jenis task yang dapat dicatat
+   3. Topik Tugas
+      1. Penulisan topik tugas harus dikutip oleh petik satu atau petik dua
+   4. Perintah masukan mengandung "deadline", "kapan", dan kode mata kuliah yang valid. Contoh : "Deadline tugas IF2211 kapan?"
 4. Memperbaharui Deadline Task
    1. Tanggal
       1. DD-MM-YYYY
@@ -38,8 +55,7 @@ run flask
    1. ID Task
       1. Berupa angka yang karakter sebelum dan sesudah angka adalah spasi (Contoh: 3 ) <- terdapat dua spasi di antara angka
 6. Menampilkan Opsi Help
-7. Mendefinisikan List Kata Penting
-8. Menampilkan Pesan Error
+   1. Perintah masukan mengandung "bisa" dan "lakukan". Contoh : "Bot bisa lakukan apa?"
 
 # Author
 * 13519049 Dzaki Muhammad
