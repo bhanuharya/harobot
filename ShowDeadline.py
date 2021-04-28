@@ -12,14 +12,14 @@ import mysql.connector
 def showDeadline(command):
     # Connect database
     mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="task"
         # host="localhost",
-        # user="hariya",
-        # password="31213121",
+        # user="root",
+        # password="",
         # database="task"
+        host="localhost",
+        user="hariya",
+        password="31213121",
+        database="task"
     )
     mycursor = mydb.cursor()
 
@@ -52,6 +52,6 @@ def showDeadline(command):
         message = ""
         for tuple in result:
             tanggal = toDate(str(tuple[0]))
-            tanggal = str(tanggal)+"\n"
+            tanggal = str(tanggal)+"<br>"
             message = message + tanggal
         return message
