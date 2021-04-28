@@ -157,4 +157,3 @@ def handleNewTask(command, jenisTask):
         successMessage = "Task berhasil ditambahkan!\n"
         newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenisTask+" - "+topik_task+"\n"
         return successMessage + newTask 
-print(handleNewTask("Tubes IF2211 \"String Matching\" pada 15/04/2021","Tubes"))
