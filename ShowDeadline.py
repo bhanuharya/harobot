@@ -1,7 +1,7 @@
 from BoyerMoore import bmMatch
 from KnuthMorrisPratt import kmpMatch
 from handleNewTask import getKodeMatkul, getTaskTopic
-from ShowTask import getJenisTugas
+from ShowTask import getJenisTugas, toDate
 import re
 import mysql.connector
 
@@ -12,14 +12,14 @@ import mysql.connector
 def showDeadline(command):
     # Connect database
     mydb = mysql.connector.connect(
-        # host="localhost",
-        # user="root",
-        # password="placeholder",
-        # database="task"
         host="localhost",
-        user="hariya",
-        password="31213121",
+        user="root",
+        password="",
         database="task"
+        # host="localhost",
+        # user="hariya",
+        # password="31213121",
+        # database="task"
     )
     mycursor = mydb.cursor()
 
@@ -34,13 +34,15 @@ def showDeadline(command):
 
     # Search tanggal based on kodekuliah, jenistugas, topik
     #select
+    selectQuery = ""
     if(jenis_tugas==None):
-        selectQuery = "SELECT tanggal_deadline FROM taskList WHERE kode_matkul="+kode_matkul+";"
+        selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\' and kode_matkul=\'"+kode_matkul+"\';"
     else:
         if(topik == None):
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+";"
+            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE isDone = \'Belum\' and jenis_task = \'"+jenis_tugas+"\' and kode_matkul=\'"+kode_matkul+"\';"
         else:
-            selectQuery = "SELECT tanggal FROM taskList WHERE jenis_task = "+jenis_tugas+" and kode_matkul="+kode_matkul+" and topik_task="+topik+";"
+            selectQuery = "SELECT tanggal_deadline FROM taskList WHERE jenis_task = \'"+jenis_tugas+"\' and kode_matkul=\'"+kode_matkul+"\' and topik_task=\'"+topik+"\';"
+    print(selectQuery)
     mycursor.execute(selectQuery)
     result = mycursor.fetchall()
 
@@ -49,7 +51,7 @@ def showDeadline(command):
     else:
         message = ""
         for tuple in result:
-            tanggal = tuple[0]
+            tanggal = toDate(str(tuple[0]))
             tanggal = str(tanggal)+"\n"
             message = message + tanggal
         return message

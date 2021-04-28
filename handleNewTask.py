@@ -135,7 +135,7 @@ def handleNewTask(command, jenisTask):
         mydb = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="dika090301",
+            password="",
             database="task"
             # host="localhost",
             # user="hariya",

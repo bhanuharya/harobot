@@ -59,17 +59,19 @@ def processInput(command):
         if (kmpMatch(command,task) != -1):
             return handleNewTask(command,task)
 
-    if(kmpMatch(command.lower(), "apa saja") != -1 and kmpMatch(command.lower(), "deadline")):
+    if(kmpMatch(command.lower(), "apa saja") != -1 and kmpMatch(command.lower(), "deadline")!=-1):
         return showTask(command)
     
-    if(kmpMatch(command.lower(), "kapan") != -1 and kmpMatch(command.lower(), "deadline")):
+    if(kmpMatch(command.lower(), "kapan") != -1 and kmpMatch(command.lower(), "deadline")!=-1):
         return showDeadline(command)
 
-    if(bmMatch(command.lower(), "bisa") != -1 and bmMatch(command.lower(), "lakukan")):
+    if(bmMatch(command.lower(), "bisa") != -1 and bmMatch(command.lower(), "lakukan")!=-1):
         return helpBot()
 
     return "Command tidak dikenali!"    # Masuk kesini kalo di for loop task ga diketahuin task apa yg mau ditambahin
                                         # Artinya bisa langsung dikasih tau kalo commmand ga dikenalin
 
-com = str("Tubes IF2211 \"String Matching\" pada 14/07/2021")
-print(str(processInput(com)))
+# com = str("Tubes IF2211 \"String Matching\" pada 14/07/2021")
+# print(str(processInput(com)))
+com2 = str("Apa saja deadline tugas antara 27/04/2021 dan 01/05/2021?")
+print(str(processInput(com2)))
