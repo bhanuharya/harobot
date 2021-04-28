@@ -14,14 +14,14 @@ import mysql.connector
 def showTask(command):
     # Connect database
     mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="task"
         # host="localhost",
-        # user="hariya",
-        # password="31213121",
+        # user="root",
+        # password="",
         # database="task"
+        host="localhost",
+        user="hariya",
+        password="31213121",
+        database="task"
     )
     mycursor = mydb.cursor()
 

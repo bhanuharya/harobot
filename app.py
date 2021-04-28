@@ -10,6 +10,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/start/')
+def start():
+    return render_template('start.html')
+
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')

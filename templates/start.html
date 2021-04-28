@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>
+      Harobot | Assistant yang Membantu Hidupmu dengan Fitur Reminder Pekerjaan!
+    </title>
+    <style>
+      body {
+    font-family: Garamond;
+}
+
+h1 {
+    color: rgb(0 193 202);
+    margin-bottom: 0;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 40px;
+}
+
+h3 {
+    color: black;
+    font-size: 20px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+#chatbox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 60px;
+}
+
+#userInput {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 60px;
+    margin-bottom: 8rem;
+}
+
+#textInput {
+    width: 87%;
+    border: none;
+    border-bottom: 3px solid rgb(0 193 202);
+    font-family: monospace;
+    font-size: 17px;
+    margin-top:1.5rem
+}
+
+#buttonInput {
+    padding: 3px;
+    font-family: monospace;
+    font-size: 17px;
+}
+
+.userText {
+    color: white;
+    font-family: monospace;
+    font-size: 17px;
+    text-align: right;
+    line-height: 30px;
+}
+
+.userText span {
+    background-color: rgb(0 193 202);
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.botText {
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 17px;
+    text-align: left;
+    line-height: 30px;
+}
+
+.botText span {
+    background-color: rgb(0 193 202);
+    padding: 10px;
+    border-radius: 2px;
+}
+
+#tidbit {
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 300px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0 193 202);
+  color: white;
+  text-align: center;
+}
+
+.chat {
+  list-style-type: none;
+  width: 20em;
+}
+
+.chat__bubble {
+  margin-bottom: 3px;
+  padding: 5px 10px;
+  clear: both;
+  border-radius: 10px 10px 2px 2px ;
+}
+
+.chat__bubble--rcvd {
+  background: #f2f2f2;
+  color: black;
+  float: left;
+  border-bottom-right-radius: 10px;
+}
+
+.chat__bubble--rcvd span{
+  padding: 1rem;
+}
+
+.chat__bubble--sent {
+  background: rgb(0 193 202);
+  color: white;
+  float: right;
+  border-bottom-left-radius: 10px;
+}
+
+.chat__bubble--sent span{
+  padding: 1rem;
+  
+}
+
+.chat__bubble--sent + .chat__bubble--sent {
+  border-top-right-radius: 2px;
+}
+
+.chat__bubble--rcvd + .chat__bubble--rcvd {
+  border-top-left-radius: 2px;
+}
+
+.chat__bubble--stop {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+a:-webkit-any-link {
+    color: rgb(0 193 202);
+    cursor: pointer;
+    text-decoration: none;
+}
+    </style>
+  </head>
+  <body>
+      <a href="/"><h1>Harobot</h1></a>
+    
+    <h3>Penerapan String Matching dan Regular Expression dalam
+      Pembangunan Deadline Reminder Assistant</h3>
+    <div>
+      <div id="chatbox">
+        <p class="chat__bubble chat__bubble--rcvd chat__bubble--stop"><span>Hi!, aku Harobot ^_^</span></p>
+      </div>
+      <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Message">
+        <input id="buttonInput" type="submit" value="Send" href="textInput">
+      </div>
+      <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="chat__bubble chat__bubble--sent"><span>' + rawText + '</span></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="chat__bubble chat__bubble--rcvd chat__bubble--stop"><span>' + data + '</span></p>';
+            $("#chatbox").append(botHtml);
+            document.getElementById('textInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          });
+        }
+        $("#textInput").keypress(function(e) {
+            if ((e.which == 13) && document.getElementById("textInput").value != "" ){
+                getBotResponse();
+            }
+        });
+        $("#buttonInput").click(function() {
+            if (document.getElementById("textInput").value != "") {
+                getBotResponse();
+            }
+        })
+      </script>
+    </div>
+    
+  </body>
+  <div class="footer">
+    <p>
+      By Dzaki, Rafidika, Wishnu
+    </p>
+  </div>
+  
+</html>

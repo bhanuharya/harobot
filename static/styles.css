@@ -1,0 +1,171 @@
+
+body {
+font-family: Garamond;
+}
+
+h1 {
+color: rgb(0 193 202);
+margin-bottom: 0;
+margin-top: 2rem;
+text-align: center;
+font-size: 40px;
+}
+
+h3 {
+color: black;
+font-size: 20px;
+margin-top: 3px;
+text-align: center;
+}
+
+#chatbox {
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+margin-top: 60px;
+}
+
+#userInput {
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+margin-top: 60px;
+margin-bottom: 8rem;
+}
+
+#textInput {
+width: 87%;
+border: none;
+border-bottom: 3px solid #009688;
+font-family: monospace;
+font-size: 17px;
+margin-top:1.5rem
+}
+
+#buttonInput {
+padding: 3px;
+font-family: monospace;
+font-size: 17px;
+}
+
+.userText {
+color: white;
+font-family: monospace;
+font-size: 17px;
+text-align: right;
+line-height: 30px;
+}
+
+.userText span {
+background-color: #009688;
+padding: 10px;
+border-radius: 2px;
+}
+
+.botText {
+color: rgb(255, 255, 255);
+font-family: monospace;
+font-size: 17px;
+text-align: left;
+line-height: 30px;
+}
+
+.botText span {
+background-color: #1897ff;
+padding: 10px;
+border-radius: 2px;
+}
+
+#tidbit {
+position:absolute;
+bottom:0;
+right:0;
+width: 300px;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: rgb(0 193 202);
+color: white;
+text-align: center;
+}
+
+.chat {
+list-style-type: none;
+width: 20em;
+}
+
+.chat__bubble {
+margin-bottom: 3px;
+padding: 5px 10px;
+clear: both;
+border-radius: 10px 10px 2px 2px ;
+}
+
+.chat__bubble--rcvd {
+background: #f2f2f2;
+color: black;
+float: left;
+border-bottom-right-radius: 10px;
+}
+
+.chat__bubble--rcvd span{
+padding: 1rem;
+font-size: 18px;
+}
+
+.chat__bubble--sent {
+background: #0066ff;
+color: white;
+float: right;
+border-bottom-left-radius: 10px;
+}
+
+.chat__bubble--sent span{
+padding: 1rem;
+font-size: 18px;
+}
+
+.chat__bubble--sent + .chat__bubble--sent {
+border-top-right-radius: 2px;
+}
+
+.chat__bubble--rcvd + .chat__bubble--rcvd {
+border-top-left-radius: 2px;
+}
+
+.chat__bubble--stop {
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+
+.logo{
+margin: 15px auto;
+width: 60%;
+text-align: center;
+}
+
+img.style-logo{
+width: 30%;
+}
+
+.button {
+background-color: rgb(0 193 202); /* Green */
+border: none;
+color: white;
+padding: 10px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 15px;
+
+}
+
+.container-logo{
+margin: 0 auto;
+text-align: center;
+}
