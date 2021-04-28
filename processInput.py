@@ -110,6 +110,9 @@ def processInput(command):
 
     if(kmpMatch(command.lower(), "bisa") != -1 and kmpMatch(command.lower(), "lakukan")!=-1):
         return helpBot()
+    
+    if(kmpMatch(command.lower(), "hi") != -1 or kmpMatch(command.lower(), "halo")!=-1 or kmpMatch(command.lower(), "harobot")!=-1):
+        return "Hi!, Aku Harobot ^_^"
 
     return "Command tidak dikenali!"    # Masuk kesini kalo di for loop task ga diketahuin task apa yg mau ditambahin
                                         # Artinya bisa langsung dikasih tau kalo commmand ga dikenalin
