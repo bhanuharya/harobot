@@ -17,11 +17,11 @@ def start():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    processInput(userText)
+    answer = str(processInput(userText))
     # if(userText == "halo"):
     #     # return str(english_bot.get_response(userText))
     #     return str('Haro, Warudo!')
     # if(userText == "hi"):
     #     # return str(english_bot.get_response(userText))
-    return str(processInput(userText))
+    return answer
     

@@ -111,13 +111,32 @@ def processInput(command):
     if(kmpMatch(command.lower(), "bisa") != -1 and kmpMatch(command.lower(), "lakukan")!=-1):
         return helpBot()
     
-    if(kmpMatch(command.lower(), "hi") != -1 or kmpMatch(command.lower(), "halo")!=-1 or kmpMatch(command.lower(), "harobot")!=-1):
+    if(kmpMatch(command.lower(), "hi") != -1 or kmpMatch(command.lower(), "halo")!=-1):
         return "Hi!, Aku Harobot ^_^"
+    
+    if(kmpMatch(command.lower(), "exit") != -1 or kmpMatch(command.lower(), "keluar")!=-1):
+        return exit()
 
     return "Command tidak dikenali!"    # Masuk kesini kalo di for loop task ga diketahuin task apa yg mau ditambahin
                                         # Artinya bisa langsung dikasih tau kalo commmand ga dikenalin
 
 # com = str("Tubes IF2211 \"String Matching\" pada 14/07/2021")
 # print(str(processInput(com)))
-com2 = str("bisa lakukan")
-print(str(processInput(com2)))
+
+def exit():
+    mydb = mysql.connector.connect(
+            # host="localhost",
+            # user="root",
+            # password="placeholder",
+            # database="task"
+            host="localhost",
+            user="hariya",
+            password="31213121",
+            database="task"
+        )
+    mycursor = mydb.cursor()
+    searchQuery = "DELETE FROM taskList;"
+    mycursor.execute(searchQuery)
+    mydb.commit()
+
+    return "Terima kasih sudah menggunakan Harobot :)"

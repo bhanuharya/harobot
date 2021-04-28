@@ -3,7 +3,7 @@ from KnuthMorrisPratt import *
 
 def helpBot():
     fitur = ("Menambah task baru", "Melihat daftar task", "Menampilkan deadline task tertentu", "Memperbaharui task", "Menandai task sudah selesai dikerjakan", "Menampilkan opsi bantuan yang difasilitasi oleh assistant")
-    kataPenting = ("Kuis", "Ujian", "Tucil", "Tubes", "Tugas")
+    kataPenting = ("Kuis", "Ujian", "Tucil", "Tubes", "Tugas", "Praktikum", "UTS", "UAS")
     message = "Fitur : <br>"
     for tuple in fitur:
         fiturLIst = tuple

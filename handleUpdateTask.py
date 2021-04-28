@@ -2,6 +2,7 @@ from BoyerMoore import *
 from KnuthMorrisPratt import *
 import re
 from handleNewTask import *
+from ShowTask import toDate
 
 def getID(command):
     matchObject = None
@@ -72,7 +73,7 @@ def handleUpdateTask(command):
             # selectQuery = 'SELECT tanggal_deadline FROM tasklist WHERE id_task='+ID+';'
             # mycursor.execute(selectQuery)
             # result = mycursor.fetchall()
-            newTanggal = reverseDate(tanggal_baru)
+            newTanggal = toDate(tanggal_baru)
             successMessage = "Task berhasil di-update!\n"
             updatedTask = "Deadline task dengan ID = "+ID+" berhasil di-update menjadi tanggal "+newTanggal+"!\n"
             return successMessage + updatedTask
