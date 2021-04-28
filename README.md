@@ -10,6 +10,18 @@ pip install -U Flask
 ```Shell
 pip install mysql-connector-python
 ```
+Diperlukan juga untuk membuat database task lalu import database dari file dump task.sql yang berada dalam folder test.
+Jalankan MariaDB untuk membuat database task
+```Shell
+mysql -u {username} -p
+
+create database task;
+```
+Keluar dari MariaDB lalu jalankan perintah berikut untuk me-restore(import) database dari file dump task.sql yang berada dalam folder test.
+```Shell
+mysql -u {username} -p task < {external_file_name}.sql;
+```
+Setelah itu ubah pengaturan user dan password pada mysql.connector dalam setiap file python (.py) yang menggunakan mysql.connector sesuai dengan pengaturan Anda.
 Setelah semua sudah terpasang, jalankan chatbot dengan command
 ```python
 run flask
