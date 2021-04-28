@@ -133,14 +133,14 @@ def handleNewTask(command, jenisTask):
     else: # Put into database and return success message
         # Establish connection to DB
         mydb = mysql.connector.connect(
-            # host="localhost",
-            # user="root",
-            # password="dika090301",
-            # database="task"
             host="localhost",
-            user="hariya",
-            password="31213121",
+            user="root",
+            password="",
             database="task"
+            # host="localhost",
+            # user="hariya",
+            # password="31213121",
+            # database="task"
         )
         mycursor = mydb.cursor()
 
@@ -157,4 +157,4 @@ def handleNewTask(command, jenisTask):
         successMessage = "Task berhasil ditambahkan!\n"
         newTask = "(ID: "+newID+") "+tanggal_deadline+" - "+kode_matkul+" - "+jenisTask+" - "+topik_task+"\n"
         return successMessage + newTask 
-print(handleNewTask("Tubes IF2211 \"String Matching\" pada 15/04/2021","Tubes"))
+#print(handleNewTask("Tubes IF2211 \"String Matching\" pada 15/04/2021","Tubes"))
