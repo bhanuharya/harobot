@@ -8,7 +8,11 @@ Untuk dapat menggunakan Harobot, pengguna perlu melakukan instalasi kakas Flask,
 pip install -U Flask
 ```
 ```Shell
-
+pip install mysql-connector-python
+```
+Setelah semua sudah terpasang, jalankan chatbot dengan command
+```python
+run flask
 ```
 
 ## Ketentuan Format Penggunaan Chatbot
@@ -37,6 +41,7 @@ pip install -U Flask
 7. Mendefinisikan List Kata Penting
 8. Menampilkan Pesan Error
 
-* export FLASK_APP=app
-* export FLASK_ENV=development
-* flask run
+# Author
+* 13519049 Dzaki Muhammad
+* 13519203 Ramadhana Bhanuharya Wishnumurti
+* 13519207 Rafidika Samekto
