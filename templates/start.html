@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>
@@ -154,6 +155,25 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: none;
 }
+
+@media (max-width:768px) {
+    #chatbox {
+    
+    width: 95%;
+    
+    }
+
+    #userInput{
+        width: 95%;
+    }
+
+    #textInput{
+
+    width: 80%;
+    }
+
+
+}
     </style>
   </head>
   <body>
@@ -175,7 +195,7 @@ a:-webkit-any-link {
           var userHtml = '<p class="chat__bubble chat__bubble--sent"><span>' + rawText + '</span></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
-          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          document.getElementById('textInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           $.get("/get", { msg: rawText }).done(function(data) {
             var botHtml = '<p class="chat__bubble chat__bubble--rcvd chat__bubble--stop"><span>' + data + '</span></p>';
             $("#chatbox").append(botHtml);

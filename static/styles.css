@@ -148,9 +148,7 @@ width: 60%;
 text-align: center;
 }
 
-img.style-logo{
-width: 30%;
-}
+
 
 .button {
 background-color: rgb(0 193 202); /* Green */
@@ -168,4 +166,19 @@ border-radius: 15px;
 .container-logo{
 margin: 0 auto;
 text-align: center;
+}
+
+@media (max-width:768px) {
+
+    img.style-logo{
+        width: 90% !important;
+        }
+}
+
+
+@media (min-width:768px) {
+img.style-logo{
+    width: 30%;
+    }
+
 }
