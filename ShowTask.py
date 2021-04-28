@@ -88,7 +88,7 @@ def showTask(command):
     if len(result)==0:
         return "Tidak ada deadline :D"
     else:
-        message = "[Daftar Deadline]\n"
+        message = "[Daftar Deadline]<br>"
         n = 1
         for tup in result:
             idTask = tup[0]
@@ -96,7 +96,7 @@ def showTask(command):
             matkul = tup[2]
             jenis = tup[3]
             topik = tup[4]
-            task = str(n) + ". (ID: "+ str(idTask) + ") "+str(deadline)+" - "+ matkul + " - " + jenis + " - " + topik + "\n"
+            task = str(n) + ". (ID: "+ str(idTask) + ") "+str(deadline)+" - "+ matkul + " - " + jenis + " - " + topik + "<br>"
             message = message + task
             n+=1
         return message

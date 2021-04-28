@@ -52,6 +52,6 @@ def showDeadline(command):
         message = ""
         for tuple in result:
             tanggal = toDate(str(tuple[0]))
-            tanggal = str(tanggal)+"\n"
+            tanggal = str(tanggal)+"<br>"
             message = message + tanggal
         return message
