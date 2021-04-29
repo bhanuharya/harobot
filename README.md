@@ -74,6 +74,7 @@ flask run
    1. Perintah masukan mengandung "bisa" dan "lakukan". Contoh : "Bot bisa lakukan apa?"
 
 # Author
+![alt text](https://raw.githubusercontent.com/salt0330/harobot/main/src/static/harobot%20(1).gif)
 * 13519049 Dzaki Muhammad
 * 13519203 Ramadhana Bhanuharya Wishnumurti
 * 13519207 Rafidika Samekto
