@@ -1,8 +1,8 @@
 # Harobot! Your Personal Deadline Reminder
 Harobot adalah sebuah chatbot yang dapat mencatat deadline tugas atau ujian. Chatbot ini dibuat dengan memanfaatkan algoritma
 String Matching dan Regular Expression serta kakas pembantu seperti Flask, HTML, CSS, JavaScript, dan MySQL. 
-![alt text](https://ibb.co/0jVQG6s)
-![alt text](https://ibb.co/pxR4TLh)
+![alt text](https://i.ibb.co/VWp3qzw/message-Image-1619684164468.jpg)
+![alt text](https://i.ibb.co/7XRrD1k/message-Image-1619684247160.jpg)
 # Ketentuan Penggunaan Chatbot
 Untuk dapat menggunakan Harobot, pengguna perlu melakukan instalasi kakas Flask, MariaDB, dan MySQL connector
 ```Shell
